@@ -4,7 +4,7 @@
 <body>
 <script>
     var array = [1, 3, 5, 7, 9, 2, 4, 6, 8];
-    /* N^2
+    /* O(N^2)
      ----------------------------------------------*/
     var bubbleSort = function (arr) {
         var n = arr.length;
@@ -58,7 +58,7 @@
     };
     // insertionSort(array);
 
-    /* N*logN
+    /* O(N*logN)
      ----------------------------------------------*/
     var mergeSort = function (arr) {
         var n = arr.length;
@@ -83,7 +83,7 @@
                 tmp.push(arr[j]);
                 j++;
             }
-            for (var k = 0; k < tmp.length; k++) {
+            for (var k = 0, l = tmp.length; k < l; k++) {
                 arr[first + k] = tmp[k];
             }
         };
