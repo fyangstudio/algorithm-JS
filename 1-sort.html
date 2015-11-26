@@ -7,6 +7,7 @@
     /* O(N^2)
      ----------------------------------------------*/
     var bubbleSort = function (arr) {
+        if (!Array.isArray(arr) || arr.length < 2) return arr;
         var n = arr.length;
         for (var i = 0; i < n - 1; i++) {
             for (var j = i + 1; j < n; j++) {
@@ -22,6 +23,7 @@
     // bubbleSort(array);
 
     var selectionSort = function (arr) {
+        if (!Array.isArray(arr) || arr.length < 2) return arr;
         var n = arr.length;
         for (var i = 0; i < n - 1; i++) {
             var k = i;
@@ -41,6 +43,7 @@
     // selectionSort(array);
 
     var insertionSort = function (arr) {
+        if (!Array.isArray(arr) || arr.length < 2) return arr;
         var n = arr.length;
         for (var i = 0; i < n; i++) {
             var k = i;
@@ -61,6 +64,7 @@
     /* O(N*logN)
      ----------------------------------------------*/
     var mergeSort = function (arr) {
+        if (!Array.isArray(arr) || arr.length < 2) return arr;
         var n = arr.length;
         var merge = function (first, mid, last) {
             var tmp = [];
