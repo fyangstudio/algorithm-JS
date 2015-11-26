@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<script>
+    var array = [1, 3, 5, 7, 9, 2, 4, 6, 8];
+    /* N^2
+     ----------------------------------------------*/
+    var bubbleSort = function (arr) {
+        var n = arr.length;
+        for (var i = 0; i < n - 1; i++) {
+            for (var j = i + 1; j < n; j++) {
+                if (arr[i] > arr[j]) {
+                    var tmp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+        }
+        return arr;
+    };
+    // bubbleSort(array);
+
+    var selectionSort = function (arr) {
+        var n = arr.length;
+        for (var i = 0; i < n - 1; i++) {
+            var k = i;
+            var min = arr[i];
+            for (var j = i + 1; j < n; j++) {
+                if (arr[j] < arr[k]) {
+                    min = arr[j];
+                    k = j;
+                }
+            }
+            var tmp = arr[i];
+            arr[i] = min;
+            arr[k] = tmp;
+        }
+        return arr;
+    };
+    // selectionSort(array);
+
+    var insertionSort = function (arr) {
+        var n = arr.length;
+        for (var i = 0; i < n; i++) {
+            var k = i;
+            while (k > 0) {
+                if (arr[k - 1] > arr[k]) {
+                    var tmp = arr[k - 1];
+                    arr[k - 1] = arr[k];
+                    arr[k] = tmp;
+                    k--
+                } else {
+                    break;
+                }
+            }
+        }
+    };
+    // insertionSort(array);
+
+    /* N*logN
+     ----------------------------------------------*/
+    var mergeSort = function (arr) {
+        var n = arr.length;
+        var merge = function (first, mid, last) {
+            var tmp = [];
+            var i = first;
+            var j = mid + 1;
+            while (i <= mid && j <= last) {
+                if (arr[i] < arr[j]) {
+                    tmp.push(arr[i]);
+                    i++;
+                } else {
+                    tmp.push(arr[j]);
+                    j++;
+                }
+            }
+            while (i <= mid) {
+                tmp.push(arr[i]);
+                i++;
+            }
+            while (j <= last) {
+                tmp.push(arr[j]);
+                j++;
+            }
+            for (var k = 0; k < tmp.length; k++) {
+                arr[first + k] = tmp[k];
+            }
+        };
+        var sort = function (i, j) {
+            if (i < j) {
+                var mid = Math.floor((i + j) / 2);
+                arguments.callee(i, mid);
+                arguments.callee(mid + 1, j);
+                merge(i, mid, j);
+            }
+        };
+        sort(0, n - 1);
+        return arr;
+    };
+    mergeSort(array);
+
+    console.log(array);
+</script>
+</body>
+</html>
